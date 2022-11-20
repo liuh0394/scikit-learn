@@ -572,16 +572,21 @@ def setup_package():
     required_python_version = (3, 8)
 
     metadata = dict(
+        ## 包名；
         name=DISTNAME,
+        ## 包的维护者；
         maintainer=MAINTAINER,
         maintainer_email=MAINTAINER_EMAIL,
+        ## 包的描述；
         description=DESCRIPTION,
         license=LICENSE,
+        ## 包的官方链接；
         url=URL,
         download_url=DOWNLOAD_URL,
         project_urls=PROJECT_URLS,
         version=VERSION,
         long_description=LONG_DESCRIPTION,
+
         classifiers=[
             "Intended Audience :: Science/Research",
             "Intended Audience :: Developers",
@@ -603,12 +608,18 @@ def setup_package():
             "Programming Language :: Python :: Implementation :: CPython",
             "Programming Language :: Python :: Implementation :: PyPy",
         ],
+
+        # 
         cmdclass=cmdclass,
+        # 依赖的python版本；
         python_requires=python_requires,
+
         install_requires=min_deps.tag_to_packages["install"],
+
         package_data={"": ["*.pxd"]},
         zip_safe=False,  # the package can run out of an .egg file
         include_package_data=True,
+        
         extras_require={
             key: min_deps.tag_to_packages[key]
             for key in ["examples", "docs", "tests", "benchmark"]
